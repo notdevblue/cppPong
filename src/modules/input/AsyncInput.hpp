@@ -1,10 +1,9 @@
 #pragma once
 
-#include <functional>
-#include <map>
 #include <thread>
+#include <vector>
+#include "./Input.hpp"
 
-template <typename T>
 class AsyncInput {
 public:
     AsyncInput(bool = false);
@@ -19,8 +18,9 @@ private:
     void CreateThread();
     void ProcessInput() const;
 
-    std::thread* m_inputWorker;
-    std::vector<const T*>* m_vectorInputs;
+    // std::thread* m_inputWorker;
+    std::thread m_inputWorker;
+    std::vector<const Input*>* m_vectorInputs;
 
     bool m_bProcessInput;
     bool m_bRun;

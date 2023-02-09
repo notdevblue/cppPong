@@ -1,8 +1,7 @@
-#include "modules/input/AsyncInput.hpp"
-#include "modules/input/Input.hpp"
+#include "./modules/input/AsyncInput.hpp"
 
 int main() {
-    AsyncInput<Input> input = AsyncInput<Input>();
+    AsyncInput a = false;
 
     return (0);
 }
