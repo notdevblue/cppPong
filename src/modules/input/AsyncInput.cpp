@@ -8,10 +8,9 @@ AsyncInput::AsyncInput(bool bStartActive)
     : m_bProcessInput(bStartActive),
       m_bRun(true),
       m_iInputId(0),
-      m_vectorInputs(nullptr),
       m_pInputWorker(nullptr) {
 
-    m_pListInputs = new std::list<const Input*>;
+    m_pListInputs = new std::list<Input*>;
 
     if (m_bProcessInput)
         CreateThread();
@@ -24,11 +23,12 @@ AsyncInput::~AsyncInput() {
         delete m_pInputWorker;
     }
 
-    delete m_vectorInputs;
+    delete m_pListInputs;
 }
 
-const int AsyncInput::AddHandler(const Input& o) {
-    o.SetID(++m_iInputId);
+const int AsyncInput::AddHandler(Input* o) {
+    ++m_iInputId;
+    o->SetID(m_iInputId);
     m_pListInputs->push_back(o);
     // TODO: Input system
     return m_iInputId;

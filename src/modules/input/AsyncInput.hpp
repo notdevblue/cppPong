@@ -1,7 +1,6 @@
 #pragma once
 
 #include <thread>
-#include <vector>
 #include <list>
 #include "./Input.hpp"
 
@@ -11,7 +10,7 @@ public:
     ~AsyncInput();
 
     // returns handler id
-    const int AddHandler(Input&&);
+    const int AddHandler(Input*);
     void RemoveHandler(int);
 
 private:
@@ -19,8 +18,7 @@ private:
     void ProcessInput() const;
 
     std::thread* m_pInputWorker;
-    std::vector<const Input*>* m_vectorInputs;
-    std::list<const Input*>* m_pListInputs;
+    std::list<Input*>* m_pListInputs;
 
     bool m_bProcessInput;
     bool m_bRun;
