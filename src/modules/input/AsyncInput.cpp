@@ -30,7 +30,7 @@ const int AsyncInput::AddHandler(Input* o) {
     ++m_iInputId;
     o->SetID(m_iInputId);
     m_pListInputs->push_back(o);
-    // TODO: Input system
+
     return m_iInputId;
 }
 
@@ -43,7 +43,8 @@ void AsyncInput::CreateThread() {
 }
 
 void AsyncInput::ProcessInput() const {
-    // while (m_bRun) {
-
-    // }
+    while (m_bRun) {
+        int k = getch();
+        
+    }
 }
